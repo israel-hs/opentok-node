@@ -5,7 +5,7 @@ const app = express();
 let members = [];
 
 // this shouldn't be a get
-app.get("/addMember/:member", (req, res) => {
+app.get("/add-member/:member", (req, res) => {
   const member = req.params.member;
   console.log("member", member);
   if (member && !members.includes(member)) {
@@ -14,11 +14,11 @@ app.get("/addMember/:member", (req, res) => {
   res.sendStatus(200).json({ members });
 });
 
-app.get("/getMembers", (req, res) => {
+app.get("/get-members", (req, res) => {
   res.json({ members });
 });
 
-app.get("removeMember/:member", (req, res) => {
+app.get("/remove-member/:member", (req, res) => {
   const member = req.params.member;
   if (member) {
     members = members.filter((name) => name !== member);
