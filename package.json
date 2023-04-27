@@ -1,0 +1,24 @@
+{
+  "name": "opentok-node",
+  "version": "1.0.0",
+  "description": "Simple express server using node to act as API for the opentok-react project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/israel-hs/opentok-node.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/israel-hs/opentok-node/issues"
+  },
+  "homepage": "https://github.com/israel-hs/opentok-node#readme",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
