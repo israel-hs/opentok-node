@@ -7,11 +7,10 @@ let members = [];
 // this shouldn't be a get
 app.get("/add-member/:member", (req, res) => {
   const member = req.params.member;
-  console.log("member", member);
   if (member && !members.includes(member)) {
     members.push(member);
   }
-  res.sendStatus(200).json({ members });
+  res.status(200).json({ members });
 });
 
 app.get("/get-members", (req, res) => {
@@ -23,7 +22,7 @@ app.get("/remove-member/:member", (req, res) => {
   if (member) {
     members = members.filter((name) => name !== member);
   }
-  res.sendStatus(200).json({ members });
+  res.status(200).json({ members });
 });
 
 app.listen(3001, () => {
