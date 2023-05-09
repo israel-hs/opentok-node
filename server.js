@@ -5,8 +5,15 @@ const app = express();
 let members = [];
 
 // this shouldn't be a get
-app.get("/add-member/:member", (req, res) => {
-  const member = req.params.member;
+// app.get("/add-member/:member", (req, res) => {
+//   const member = req.params.member;
+//   if (member && !members.includes(member)) {
+//     members.push(member);
+//   }
+//   res.status(200).json({ members });
+// });
+app.post("/add-member/", (req, res) => {
+  const member = req.body.member;
   if (member && !members.includes(member)) {
     members.push(member);
   }
