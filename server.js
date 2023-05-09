@@ -2,17 +2,11 @@ const express = require("express");
 
 const app = express();
 
+app.use(express.json());
+
 let members = [];
 
-// this shouldn't be a get
-// app.get("/add-member/:member", (req, res) => {
-//   const member = req.params.member;
-//   if (member && !members.includes(member)) {
-//     members.push(member);
-//   }
-//   res.status(200).json({ members });
-// });
-app.post("/add-member/", (req, res) => {
+app.post("/add-member", (req, res) => {
   const member = req.body.member;
   if (member && !members.includes(member)) {
     members.push(member);
@@ -24,8 +18,8 @@ app.get("/get-members", (req, res) => {
   res.json({ members });
 });
 
-app.get("/remove-member/:member", (req, res) => {
-  const member = req.params.member;
+app.delete("/remove-member", (req, res) => {
+  const member = req.body.member;
   if (member) {
     members = members.filter((name) => name !== member);
   }
