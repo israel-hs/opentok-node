@@ -1,8 +1,12 @@
 const express = require("express");
+const cors = require("cors");
 
 const app = express();
 
+// middleware to have our server accept json (for post and delete ops)
+// and cors to accept cross origin requests from any other site
 app.use(express.json());
+app.use(cors());
 
 let members = [];
 
