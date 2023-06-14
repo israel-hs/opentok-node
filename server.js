@@ -1,5 +1,6 @@
 const express = require("express");
 const cors = require("cors");
+const { sessionId, token } = require("./opentok.config");
 
 const app = express();
 
@@ -16,6 +17,33 @@ app.post("/add-member", (req, res) => {
     members.push(member);
   }
   res.status(200).json({ members });
+});
+
+app.get("/call-v2/room/:roomId", (req, res) => {
+  const roomId = req.params.roomId;
+
+  if (roomId && roomId !== "0") {
+    const response = {
+      roomId,
+      status: "Open",
+      recording: "AudioVideo",
+      openTokSessionId: sessionId,
+      openTokAccessToken: token,
+      activeParticipants: [
+        {
+          userType: "expert",
+          userId: "some-random-uuid-for-expert",
+        },
+        {
+          userType: "member",
+          userId: "some-random-uuid-for-member",
+        },
+      ],
+    };
+    res.json({ ...response });
+  }
+
+  res.status(404).json({ error: "No room id provided or the room is closed" });
 });
 
 app.get("/get-members", (req, res) => {
